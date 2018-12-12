@@ -3,7 +3,7 @@ ARG CONTENTIMAGE1="huggla/pyinstaller-alpine:$TAG"
 ARG CONTENTDESTINATION1="/"
 ARG BUILDDEPS="dash"
 ARG BUILDCMDS=\
-"   head -33 /buildfs/src/featureReport.py.org > /src/featureReport.py "\
+"   head -30 /buildfs/src/featureReport.py.org > /src/featureReport.py "\
 "&& tail -26 /buildfs/src/featureReport.py.add >> /src/featureReport.py "\
 "&& sed -i 's/# Copyright 2018, Sourcepole AG/# Copyright 2018, Sourcepole AG, Henrik Uggla/' /src/featureReport.py "\
 "&& cp /buildfs/src/requirements.txt /src/ "\
