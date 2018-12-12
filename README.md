@@ -1,2 +1,2 @@
 # featurereport-QWC2
-Featurereport service for QWC2.
+Feature report service for QWC2.
