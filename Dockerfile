@@ -3,15 +3,15 @@ ARG CONTENTIMAGE1="huggla/pyinstaller-alpine:$TAG"
 ARG CONTENTDESTINATION1="/"
 ARG BUILDDEPS="dash"
 ARG BUILDCMDS=\
-"   head -33 /buildfs/src/featurereport.py.org > /src/featurereport.py "\
-"&& tail -26 /buildfs/src/featurereport.py.add >> /src/featurereport.py "\
-"&& sed -i 's/# Copyright 2018, Sourcepole AG/# Copyright 2018, Sourcepole AG, Henrik Uggla/' /src/featurereport.py "\
+"   head -33 /buildfs/src/featureReport.py.org > /src/featureReport.py "\
+"&& tail -26 /buildfs/src/featureReport.py.add >> /src/featureReport.py "\
+"&& sed -i 's/# Copyright 2018, Sourcepole AG/# Copyright 2018, Sourcepole AG, Henrik Uggla/' /src/featureReport.py "\
 "&& cp /buildfs/src/requirements.txt /src/ "\
 "&& cp -a /usr/bin/dash /usr/local/bin/ "\
 "&& sed -i 's|shell=True,|shell=True, executable=\"/usr/local/bin/dash\",|g' /usr/local/lib/python2.7/ctypes/util.py "\
 "&& cd /src "\
-"&& /pyinstaller/pyinstaller.sh --onefile --noconfirm --clean --exclude-module Werkzeug --distpath /imagefs/usr/local/bin featurereport.py"
-ARG EXECUTABLES="/usr/local/bin/featurereport"
+"&& /pyinstaller/pyinstaller.sh --onefile --noconfirm --clean --exclude-module Werkzeug --distpath /imagefs/usr/local/bin featureReport.py"
+ARG EXECUTABLES="/usr/local/bin/featureReport"
 ARG REMOVEFILES="/sbin /usr/include /usr/share /usr/sbin" 
 
 #---------------Don't edit----------------
@@ -25,7 +25,7 @@ COPY --from=build /imagefs /
 
 ENV VAR_LINUX_USER="report" \
     VAR_GUNICORN_PARAMS="bind=0.0.0.0:5020" \
-    VAR_FINAL_COMMAND="featurereport \$VAR_GUNICORN_PARAMS"
+    VAR_FINAL_COMMAND="featureReport \$VAR_GUNICORN_PARAMS"
 
 #---------------Don't edit----------------
 USER starter
